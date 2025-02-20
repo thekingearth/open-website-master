@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website with Countdown</title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+@import url(https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Kavoon&family=Miltonian+Tattoo&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rum+Raisin&display=swap);
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Nunito", serif;
+}
+.loader {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50%;
+}
+
+.loader span {color: red;}
+</style>
+</head>
+<body>
+  <div id="loading" class="loader">
+    Redirecting in <span id="countdown">5</span> ms...
+  </div>
+
+  <div id="content" style="display: none; margin-top: 50%;">
+    <h1 style="text-align: center;">Welcome to My Website!</h1>
+    <p>This is the content of the website.</p>
+  </div>
+
+<script>
+      let countdown = 50;
+      const countdownElement = document.getElementById('countdown');
+
+      const interval = setInterval(function () {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+    if (countdown <= 0) {
+      clearInterval(interval);
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      window.location.href = 'https://www.kinbasari.my.id/menu/disclaimer';
+    }
+  }, 100);
+  </script>
+</body>
+</html>
