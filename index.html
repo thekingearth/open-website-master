@@ -3,50 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website with Countdown</title>
+  <title>Website with Loading Progress</title>
   <link rel="stylesheet" href="styles.css">
 <style>
-@import url(https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Kavoon&family=Miltonian+Tattoo&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rum+Raisin&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
 
-body {
-  background-color: #000;
-  color: #fff;
-  font-family: "Nunito", serif;
-}
-.loader {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 50%;
-}
+body { background-color: #000; color: #fff; font-family: "Nunito", sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; }
 
-.loader span {color: red;}
-</style>
+.loader { font-size: 45px; text-align: center; text-shadow: 0 0 5px #fd0; }
+.progress-bar { width: 100%; max-width: 300px; height: 20px; background-color: #444; border-radius: 10px; border: 1px solid #ffc; overflow: hidden; margin-top: 2px; }
+.progress { height: 100%; width: 0; background-color: red; transition: width 0.1s ease-in-out; }
+  </style>
 </head>
 <body>
-  <div id="loading" class="loader">
-    Redirecting in <span id="countdown">5</span> ms...
+  <div class="loader"><span id="countdown">0%</span></div>
+  <div class="progress-bar">
+    <div class="progress" id="progress"></div>
   </div>
 
-  <div id="content" style="display: none; margin-top: 50%;">
-    <h1 style="text-align: center;">Welcome to My Website!</h1>
-    <p>This is the content of the website.</p>
-  </div>
+  <script>
+    let progress = 0;
+    const countdownElement = document.getElementById('countdown');
+    const progressElement = document.getElementById('progress');
 
-<script>
-      let countdown = 50;
-      const countdownElement = document.getElementById('countdown');
+    const interval = setInterval(function () {
+      progress += 1;
+      countdownElement.textContent = progress + "%";
+      progressElement.style.width = progress + "%";
 
-      const interval = setInterval(function () {
-        countdown--;
-        countdownElement.textContent = countdown;
-
-    if (countdown <= 0) {
-      clearInterval(interval);
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('content').style.display = 'block';
-      window.location.href = 'https://www.kinbasari.my.id/menu/disclaimer';
-    }
-  }, 100);
+      if (progress >= 100) {
+        clearInterval(interval);
+        window.location.href = 'https://www.kinbasari.my.id/menu/disclaimer';
+      }
+    }, 100);
   </script>
 </body>
 </html>
