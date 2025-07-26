@@ -11,10 +11,11 @@ body { background-color: #000; color: #fff; font-family: "Nunito", sans-serif; d
 
 .loader { font-size: 45px; text-align: center; text-shadow: 0 0 5px #fd0; }
 .progress-bar { width: 100%; max-width: 300px; height: 20px; background-color: #444; border-radius: 10px; border: 1px solid #ffc; overflow: hidden; margin-top: 2px; }
-.progress { height: 100%; width: 0; background-color: red; transition: width 0.1s ease-in-out; }
+.progress { height: 100%; width: 0; background: linear-gradient(100deg, #18f, #e00); border-radius: 10px; transition: width 0.1s ease-in-out; }
   </style>
 </head>
 <body>
+  <h1></h1>
   <div class="loader"><span id="countdown">0%</span></div>
   <div class="progress-bar">
     <div class="progress" id="progress"></div>
@@ -34,7 +35,7 @@ body { background-color: #000; color: #fff; font-family: "Nunito", sans-serif; d
         clearInterval(interval);
         window.location.href = 'https://www.tintapenaku.com/coretan/seni-mengendalikan-diri-stoikisme-rahasia-kebahagiaan.html';
       }
-    }, 100);
+    }, 50);
   </script>
 </body>
 </html>
